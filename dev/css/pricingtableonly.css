@@ -1,0 +1,131 @@
+.body{
+	max-width: 1280px;
+}
+.infoscreen{
+	float: left;
+	margin: auto;
+	padding-top: 10%;
+	padding-left: 10%;
+	text-align: center;
+}
+.newsignup-form{
+	float: left;
+	margin: auto;
+	padding-top: 10%;
+	padding-left: 20%;
+	text-align: center;
+}
+.screenshot{
+	padding-top: 5%;
+}
+.info{
+	text-align: center;
+}
+a {
+	color: #f37520;
+}
+h3 {
+	font-family: "Open+Sans"
+	font-size: 18px;
+}
+
+/* Pricing Table */
+
+.pricing {
+    padding-top: 15px;
+}
+
+* {
+    margin: auto; 
+    padding: 0;
+}
+         
+body {
+    font-family: "Open+Sans", arial, verdana;
+}
+.pricing_table {
+    line-height: 150%; 
+    font-size: 12px; 
+    margin: 0 auto; 
+    width: 75%; 
+    max-width: 800px; 
+    padding-top: 10px;
+    margin-top: 100px;
+}
+ 
+.price_block {
+    width: 100%; 
+    color: #fff; 
+    float: left; 
+    list-style-type: none; 
+    position: relative; 
+    box-sizing: border-box;
+     
+    margin-bottom: 10px; 
+    border-bottom: 1px solid transparent; 
+}
+.pricing_table h3 {
+    text-transform: uppercase; 
+    padding: 5px 0; 
+    background: #f37520; 
+    margin: -10px 0 1px 0;
+}
+.price {
+    display: table; 
+    background: #fff; 
+    width: 100%; 
+    height: 70px; 
+}
+.price_figure {
+    font-size: 24px;
+    color: #000; 
+    text-transform: uppercase; 
+    vertical-align: middle; 
+    display: table-cell;
+}
+.price_number {
+    font-weight: bold; 
+    display: block;
+}
+.price_tenure {
+    font-size: 11px; 
+}
+.features {
+    background: #fff; 
+    color: #000;
+}
+.features li {
+    padding: 8px 15px;
+    border-bottom: 1px solid #f37520; 
+    font-size: 11px; 
+    list-style-type: none;
+}
+.footer {
+    padding: 15px; 
+    background: #fff;
+}
+.action_button {
+    text-decoration: none; 
+    color: #fff; 
+    font-weight: bold; 
+    background: #f37520; 
+    padding: 5px 20px; 
+    font-size: 11px; 
+    text-transform: uppercase;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width : 480px) and (max-width : 768px) {
+    .price_block {width: 50%;}
+    .price_block:nth-child(odd) {border-right: 1px solid transparent;}
+    .price_block:nth-child(3) {clear: both;}
+     
+    .price_block:nth-child(odd):hover {border: 0 none;}
+}
+@media only screen and (min-width : 768px){
+    .price_block {width: 25%;}
+    .price_block {border-right: 1px solid transparent; border-bottom: 0 none;}
+    .price_block:last-child {border-right: 0 none;}
+     
+    .price_block:hover {border: 0 none;}
+}

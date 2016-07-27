@@ -1,0 +1,90 @@
+.list_carousel{
+	width:960px;
+	height:200px;
+	margin-top:-105px;
+}
+.list_carousel ul{
+	padding:0;
+}
+.list_carousel li{
+	width:200px; 
+	height:198px; 
+	background-size:cover; 
+	border: solid thin #000; 
+	overflow:hidden; 
+	float: left;
+	margin-left:15px;
+	list-style-type:none;
+}
+.list_carousel li:hover{
+	opacity:.7;
+}
+.caroufredsel_wrapper{
+	cursor:pointer !important;
+	height: 200px !important;
+}
+#carousel {             
+    width: 960px;       
+    height: 200px;      
+    overflow: hidden;
+}
+.list_carousel #next{
+	text-decoration: none;
+	font-size: 100px;
+	color: #FFF;
+	position: absolute;
+	margin-top: -230px;
+	margin-left: 927px;
+	font-family: times;
+	background-color: #000;
+	padding-bottom: 31px;
+	padding-top: 75px;
+	opacity: .5;
+	height:95px;
+}
+.list_carousel #prev{
+	text-decoration: none;
+	font-size: 100px;
+	color: #FFF;
+	position: absolute;
+	margin-top: -230px;
+	font-family: times;
+	background-color: #000;
+	padding-bottom: 31px;
+	padding-top: 75px;
+	opacity: .5;
+	height:95px;
+}
+.list_carousel #next:hover{
+	opacity:.8;
+}
+.list_carousel #prev:hover{
+	opacity:.8;
+}
+.dasher-branding{
+	display: block;
+	margin-top: 15px;
+}
+.poa-banner{
+	background-image: url(http://getdasher.com/dasher-tools/images/wisetail-logo.png);
+	width: 190px;
+	background-repeat: no-repeat;
+	height: 178px;
+	position: relative;
+	z-index: 1;
+	background-position: top center;
+	background-size:contain;
+	margin-left: 379px;
+}
+#cboxTitle {
+position: absolute;
+bottom: 28px !important;
+left: 0;
+text-align: center;
+width: 100%;
+color: #FFF;
+background-color: rgba(0,0,0,.7) !important;
+}
+.list_carousel li:before {
+content: '' !important;
+}

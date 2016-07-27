@@ -1,0 +1,238 @@
+<?php
+header('Access-Control-Allow-Origin: *'); 
+ini_set("display_errors", 1);
+session_start();
+require_once ("connect2.php");
+require_once ("settings.php");
+?>
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script>
+$width = jQuery( window ).width();
+if($width < 960){
+	jQuery('head').append("<link rel='stylesheet' id='dasher-style-css'  href='http://app.getdasher.com/dasher-tools/galleryMobile.css' type='text/css' media='all' />");
+	$newScript = '<script type="text/javascript" src="http://app.getdasher.com/dasher-tools/jquery.flip.min.js">';
+	jQuery('head').append($newScript);
+	jQuery('head').append('<\/script>');
+	jQuery(document).ready(function(){
+		jQuery('.back').wrap("<div class='back-holder'></div>");
+		jQuery('.back').attr('title', '');
+		jQuery('.front').wrap("<div class='front-holder'></div>");
+		jQuery( ".card" ).click(function() {
+			if(jQuery(this).find('.back').css('display') == "none"){
+	      	jQuery(this).flip({
+				direction:'lr',
+				color:'#FFFFFF'
+			});
+			jQuery(this).find('.back').toggle();
+			jQuery(this).find('.front').toggle();
+			jQuery(this).css('background-color', '#d9581e');
+			jQuery(this).css('margin', 'auto');
+		}
+		else{
+	      	jQuery(this).flip({
+				direction:'lr',
+				color:'#FFFFFF'
+			});
+			jQuery(this).find('.back').toggle();
+			jQuery(this).find('.front').toggle();
+			jQuery(this).css('background-color', '#d9581e');
+			jQuery(this).css('margin', 'auto');
+		}
+	    });
+		jQuery('.front').each(function(){
+			$orgWidth = jQuery(this).parent().parent('.card').attr('orgWidth');
+			$orgHeight = jQuery(this).parent().parent('.card').attr('orgHeight');
+				$windowWidth = jQuery(window).width();
+				if($windowWidth >= 601){
+				$curWidth = jQuery(window).width() * .46;
+				}
+				else{
+				$curWidth = jQuery(window).width() * .9;	
+				}
+			$percent = $curWidth / $orgWidth;
+			$newHeight = $orgHeight*$percent;
+			jQuery(this).css('height', $newHeight);
+			jQuery(this).css('width', $curWidth);
+			jQuery(this).parent().parent().find('.back-holder').find('.back').css('height', $newHeight);
+			jQuery(this).parent().parent().find('.back-holder').find('.back').css('width', $curWidth);
+			jQuery(this).parent().parent().find('.front-holder').find('.front').css('height', $newHeight);
+			jQuery(this).parent().parent().find('.front-holder').find('.front').css('width', $curWidth);
+		});
+		
+		jQuery(window).on('resize', function(){
+			jQuery('.front').each(function(){
+				$orgWidth = jQuery(this).parent().parent('.card').attr('orgWidth');
+				$orgHeight = jQuery(this).parent().parent('.card').attr('orgHeight');
+					$windowWidth = jQuery(window).width();
+					if($windowWidth >= 601){
+					$curWidth = jQuery(window).width() * .46;
+					}
+					else{
+					$curWidth = jQuery(window).width() * .9;	
+					}
+				$percent = $curWidth / $orgWidth;
+				$newHeight = $orgHeight*$percent;
+				jQuery(this).css('height', $newHeight);
+				jQuery(this).css('width', $curWidth);
+				jQuery(this).parent().parent().find('.back-holder').find('.back').css('height', $newHeight);
+				jQuery(this).parent().parent().find('.back-holder').find('.back').css('width', $curWidth);
+				jQuery(this).parent().parent().find('.front-holder').find('.front').css('height', $newHeight);
+				jQuery(this).parent().parent().find('.front-holder').find('.front').css('width', $curWidth);
+			});
+		});
+	});
+}
+else {
+jQuery('head').append("<link rel='stylesheet' id='dasher-style-css'  href='http://app.getdasher.com/dasher-tools/styles2.css' type='text/css' media='all' />");
+	  jQuery(document).ready(function(){
+
+			$('.brick.w1 #container-card:nth-child(2) .back, .brick.w1 #container-card:nth-child(3) .back, .brick.w5 .col3 #container-card:nth-child(1) .back, .brick.w5 .col3 #container-card:nth-child(2) .back, .brick.w5 .col3 #container-card:nth-child(3) .back').tooltip({
+			          content: function () {
+			              return $(this).prop('title');
+			          },
+					  position: {
+					        my: "center bottom-20",
+					        at: "center top",
+					        using: function( position, feedback ) {
+					          $( this ).css( position );
+					          $( "<div>" )
+					            .addClass( "arrow" )
+					            .addClass( feedback.vertical )
+					            .addClass( feedback.horizontal )
+					            .appendTo( this );
+					        }
+					      }
+			      });
+
+			$('.brick.w1 #container-card:nth-child(1), .brick.w1 #container-card:nth-child(4), .brick.w5 #container-card').each(function(){ 
+					if($(this).parent('.col3').length > 0){
+
+					}
+					else {
+					$(this).find('.back').attr('title', ''); 
+				}
+			});
+
+			$('.card').fancybox({
+				helpers:  {
+				        title : {
+				            type : 'over'
+				        }
+				    },
+				beforeShow : function() {
+				        this.title = $(this.element).attr('titler');
+				    }
+				});
+				
+    $( ".front" ).hover(function() {
+      $( this ).next('back').tooltip();
+    }, function() {
+      $( this ).next('back').tooltip();
+    });
+});
+
+}
+</script>
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+	  
+	  $("div.lazy").lazyload({
+	        effect : "fadeIn"
+	    });
+	
+	
+	  
+	  
+    });
+  </script>
+<?php
+	$photos = array();
+	
+	$photo_query = 'SELECT p.photo_url, p.id, cp.approval_status, p.type, p.captions, p.user_link, p.user_name, p.service_link, p.post_id
+						 FROM campaign_photos cp
+		 				 JOIN photos p ON cp.photo_id = p.id
+						WHERE campaign_id = 1 || campaign_id = 2 || campaign_id = 3
+						ORDER BY id DESC';
+
+	if ($results = mysqli_query($link, $photo_query)) {	
+		$i = 0;
+		while( $info =  mysqli_fetch_assoc($results) ){
+			$photos[$i]['url'] = $info['photo_url'];
+			$photos[$i]['id'] = $info['id'];
+			$photos[$i]['type'] = $info['type'];
+			$photos[$i]['postlink'] = $info['service_link'];
+			$photos[$i]['userlink'] = $info['user_link'];
+			$photos[$i]['username'] = $info['user_name'];
+			$photos[$i]['captions'] = urldecode($info['captions']);
+			$photos[$i]['captions'] = str_replace("'", '&#39', $photos[$i]['captions']);
+			$photos[$i]['approval_status'] = $info['approval_status'];
+			$i++;
+		};
+	}
+	else{
+		  printf("Error: %s\n", mysqli_error($link));
+		echo "<br />";
+	}
+	
+	// Get New Photos that haven't been approved ::::::::::::::::::::::::::::::::::END
+	
+	function getTypeImage($picID){
+		switch ($picID) {
+		    case 1:
+		        echo '<img src="http://app.getdasher.com/images/twitter-24.png" alt="twitter" class="icon" /> ';
+		        break;
+		    case 2:
+		        echo '<img src="http://app.getdasher.com/images/instagram-24.png" alt="instagram" class="icon" /> ';
+		        break;
+		    case 3:
+		        echo '<img src="http://app.getdasher.com/images/googleplus-24.png" alt="googleplus" class="icon" /> ';
+		        break;
+			case 4:
+			    echo '<img src="http://app.getdasher.com/images/facebook-24.png" alt="facebook" class="icon" /> ';
+			    break;
+		}
+	}
+	
+	
+$count2 = 1; 
+$count3 = 1;
+?>
+
+<?php	
+	echo '<a href="http://getdasher.com" target="_blank" style="float:right;"><img src="http://app.getdasher.com/images/hatch_header_08.png" class="gallery_logo"></a><div style="clear:both;"></div><div id="container"><div class="brick w'.$count3.'">';
+						if( count($photos) > 0 ):
+						 foreach( $photos as $photo): 
+							 if($photo['approval_status'] != ""): 
+				                 if( $photo['approval_status'] == 1 ): ?>
+								<?php //$size = getimagesize($photo['url']); ?>
+								 <div id="container-card">
+									 <div class="card" rel="gallery1" href="<?php echo $photo['url']; ?>" rel="dasher-large" titler='<span class="tooltip"><?php getTypeImage($photo['type']); ?><br /><a href="<?php echo $photo['userlink']; ?>" target="_blank"><?php echo $photo['username']; ?></a> <?php echo $photo['captions']; ?><br /><a href="<?php echo $photo['postlink']; ?>" target="_blank">View the Post &#8611;</a></span>'  >
+				                 <div class="front face lazy" data-original="<?php echo $photo['url']; ?>" href="<?php echo $photo['url']; ?>"></div>
+								 <div class="back face center" title = '<span class="tooltip"><?php getTypeImage($photo['type']); ?><a href="<?php echo $photo['userlink']; ?>" target="_blank"><?php echo $photo['username']; ?></a> <?php echo $photo['captions']; ?><br /><a href="<?php echo $photo['postlink']; ?>" target="_blank">View the Post &#8611;</a></span>'><span class="smallSlideType"><?php getTypeImage($photo['type']); ?></span><span class="tooltip"><?php getTypeImage($photo['type']); ?><br /><a href='<?php echo $photo['userlink']; ?>' target='_blank'><?php echo $photo['username']; ?></a> <?php echo $photo['captions']; ?><br /><a href='<?php echo $photo['postlink']; ?>' target='_blank'>View the Post &#8611;</a></span></div>
+							</div></div>
+								<?php
+								$count3++;
+								if($count3 == 5){
+									echo '</div><div class="brick w'.$count3.'"><div class="col3">';
+								}
+								if($count3 == 8){
+									echo '</div>';
+								}
+								if($count3 == 11){
+									echo '</div><div class="clearfix"></div><div class="brick w1">';
+									$count3 = 1;
+								}
+						 endif;
+				              endif;
+						 endforeach;
+				echo '<div class="clearfix"></div>
+			</div>
+			
+			<div style="clear:both;"></div><a href="http://getdasher.com" target="_blank"><img class="dasher-branding" src="http://app.getdasher.com/images/powered_by_dasher1.png" width="688" /></a>';
+			else: 
+				echo '<p>No photos have been collected yet.</p>';
+			endif;
+			?>
+</body>
+</html>

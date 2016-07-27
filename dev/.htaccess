@@ -1,0 +1,21 @@
+DirectoryIndex index.php
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks
+RewriteEngine on
+RewriteBase /
+RewriteRule campaign-display/ campaign_display.php
+RewriteRule gallery-builder/ configurizer.php
+RewriteRule login/ login.php
+RewriteRule logout/ logout.php
+RewriteRule signup/ dashersignup.php
+RewriteRule contact contact.php
+RewriteRule contact/ contact.php
+RewriteRule galleries/ galleries_display.php
+RewriteRule ^hashtag-display/([0-9]+) /campaign_photos.php?id=$1
+RewriteRule my-account/ my_account.php
+RewriteRule my-plan/ upgrade_account.php
+</IfModule>
+
+<FilesMatch ".(eot|ttf|otf|woff)">
+	Header set Access-Control-Allow-Origin "*"
+</FilesMatch>

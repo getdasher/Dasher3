@@ -1,0 +1,8 @@
+@media screen and (max-width: 767px) {
+	
+}
+
+@media screen and (max-width: 600px){	
+	.brick.w1, .brick.w5 {width:auto; float:none;}
+	
+}

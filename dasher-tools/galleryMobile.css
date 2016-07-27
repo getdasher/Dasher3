@@ -1,0 +1,77 @@
+@media screen and (max-width: 1099px) {
+	img{max-width:100%;}
+	.back{display:none; background-color:#d9581e; margin: auto; margin-bottom: 20px; position: relative;}
+	.site-branding .devcon_logo{position: absolute; width: 40%; top:10px;}
+	.site-branding .gallery_logo{position: absolute; right: 10px; width: 40%; top:30px}
+	.site-branding .gallery_banner{margin: auto; margin-top: 20%; width: 240px; position: relative; display: block; z-index:1000;}
+	.front{ margin:auto; margin-bottom: 20px; background-size: cover; background-repeat:no-repeat;}
+	.content-wrap {margin-top:-50px;}
+	.card{background-color:#FFF; margin:auto; cursor:pointer; max-width:46%; float:left;}
+	.container-card{margin:auto;}
+	.card:nth-child(odd){margin-left:1%; margin-right:2%;}
+	.back span{
+		   padding-right:10px;
+		   font-style:italic;
+	       padding-left: 10px;
+			width: 95%;
+			 word-wrap:break-word;
+			color:#FFF;
+			font-family: ff-ernestine-web-pro, sans-serif;
+			font-kerning: auto;
+			font-size: 15px;
+			font-style: normal;
+			font-style:italic;
+			position:absolute;
+			bottom:10px;
+			left:10px;
+	}
+	.back span a{
+		color:#FFF;
+	}
+	.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}
+	.smallSlideType{display:none;}
+}
+
+@media screen and (max-width: 600px){	
+	img{max-width:100%;}
+	.back{display:none; background-color:#d9581e; margin: auto; margin-bottom: 20px; position: relative;}
+	.site-branding .devcon_logo{position: absolute; width: 40%; top:10px;}
+	.site-branding .gallery_logo{position: absolute; right: 10px; width: 40%; top:30px}
+	.site-branding .gallery_banner{margin: auto; margin-top: 20%; width: 240px; position: relative; display: block; z-index:1000;}
+	.front{max-width: 100%; margin:auto; margin-bottom: 20px; background-size: cover; background-repeat:no-repeat;}
+	.content-wrap {margin-top:-50px;}
+	.card{max-width:100%; background-color:#FFF; margin:auto; cursor:pointer; float:none; clear:both;}
+	.back span{
+		   padding-right:10px;
+		   font-style:italic;
+	       padding-left: 10px;
+			width: 90%;
+			 word-wrap:break-word;
+			color:#FFF;
+			font-family: ff-ernestine-web-pro, sans-serif;
+			font-kerning: auto;
+			font-size: 15px;
+			font-style: normal;
+			font-style:italic;
+			position:absolute;
+			bottom:10px;
+			left:10px;
+	}
+	.back span a{
+		color:#FFF;
+	}
+	.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}
+	.smallSlideType{display:none;}
+
+}
+
+@media screen and (max-width: 767px) {
+	
+}
+
+@media screen and (max-width: 600px){	
+	.brick.w1, .brick.w5 {width:auto; float:none;}
+	.front.face.lazy {height:200px;}
+	.back.face.center {height:200px;}
+	
+}
